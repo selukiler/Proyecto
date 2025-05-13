@@ -1,13 +1,10 @@
-package Pantallas;
+ package Pantallas;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import ConexionBasedeDatos.ConexionMySQL;
-
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -26,7 +23,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
-public class InicioSesion extends JFrame {
+public class Registro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -40,7 +37,7 @@ public class InicioSesion extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InicioSesion frame = new InicioSesion();
+					Registro frame = new Registro();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,8 +49,9 @@ public class InicioSesion extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	ConexionBasedeDatos.ConexionMySQL x = new ConexionBasedeDatos.ConexionMySQL("root", "", "Registro");
-	public InicioSesion() {
+	ConexionBasedeDatos.ConexionMySQL x = new ConexionBasedeDatos.ConexionMySQL("root", "", "registro");
+
+	public Registro() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 900, 700);
 		contentPane = new JPanel();
@@ -66,56 +64,45 @@ public class InicioSesion extends JFrame {
 ///////////////////////////////////////////////////////////////////////////////////////////BOTONES Y FIELDS/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		
-		Button btn_Acceder = new Button("Acceder");
-		btn_Acceder.addActionListener(new ActionListener() {
+		Button btn_Crear = new Button("Crear");
+		btn_Crear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					x.conectar();
 					char[] password = passwordField.getPassword();
 			        String passwordString = new String(password);
+			        String y = "INSERT INTO users(Usuario, Contraseña) VALUES('"+text_usuario.getText()+"','"+passwordString+"')";
 					String z = "SELECT * FROM users";
 					ResultSet comparar=x.ejecutarSelect(z);
 					boolean encontrado=false;
 					while(comparar.next()) 
 					{
 						String usuario= comparar.getString("Usuario");
-						String contraseña= comparar.getString("Contraseña");
-						if(usuario.equals(text_usuario.getText())&&contraseña.equals(passwordString))
+						if(usuario.equals(text_usuario.getText()))
 						{
 							encontrado=true;
 							break;
 						}
 					}
 					if(encontrado==true) {
-						Primera n= new Primera();
-						n.setVisible(true);
+						JOptionPane.showMessageDialog(null, "Este nombre de usuario ya existe.\n"
+								+ "Introduzca otro distinto.");
 						}
 					else {
-							JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta.\n"
-									+ "Pruebe de nuevo.");
+						x.ejecutarInsertDeleteUpdate(y);
 						}
+					dispose();
 					}
-					
-					
+				
+				
 				 catch (SQLException e1) {
+					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
-		btn_Acceder.setBounds(415, 495, 88, 29);
-		contentPane.add(btn_Acceder);
-		
-		JButton btn_CrearCuenta = new JButton("Crear Cuenta");
-		btn_CrearCuenta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Registro r = new Registro();
-				r.setVisible(true);
-			}
-		});
-		btn_CrearCuenta.setBackground(new Color(184, 134, 11));
-		btn_CrearCuenta.setFont(new Font("Calibri", Font.BOLD, 14));
-		btn_CrearCuenta.setBounds(737, 42, 122, 39);
-		contentPane.add(btn_CrearCuenta);
+		btn_Crear.setBounds(415, 495, 88, 29);
+		contentPane.add(btn_Crear);
 		
 		text_usuario = new JTextField();
 		text_usuario.setBounds(376, 313, 173, 20);
@@ -129,12 +116,12 @@ public class InicioSesion extends JFrame {
 		
 		
 ///////////////////////////////////////////////////////////////////////////////////////////TEXTOS E IMAGENES/////////////////////////////////////////////////////////////////////////////////////////////////////
-		JLabel lbl_InicioSesion = new JLabel("Iniciar Sesión");
-		lbl_InicioSesion.setBackground(new Color(255, 255, 255));
-		lbl_InicioSesion.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_InicioSesion.setFont(new Font("Calibri", Font.BOLD, 35));
-		lbl_InicioSesion.setBounds(315, 183, 289, 60);
-		contentPane.add(lbl_InicioSesion);
+		JLabel lbl_Registro = new JLabel("Registro");
+		lbl_Registro.setBackground(new Color(255, 255, 255));
+		lbl_Registro.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_Registro.setFont(new Font("Calibri", Font.BOLD, 35));
+		lbl_Registro.setBounds(315, 183, 289, 60);
+		contentPane.add(lbl_Registro);
 		
 		JLabel lbl_Contraseña = new JLabel("Contraseña");
 		lbl_Contraseña.setFont(new Font("Calibri", Font.BOLD, 18));
@@ -149,7 +136,7 @@ public class InicioSesion extends JFrame {
 		JLabel logo = new JLabel("");
 		logo.setBackground(Color.BLACK);
 		logo.setIcon(new ImageIcon(InicioSesion.class.getResource("/Imagenes/logo.png")));
-		logo.setBounds(30, 26, 136, 96);
+		logo.setBounds(392, 11, 136, 96);
 		contentPane.add(logo);
 		
 		JLabel lbl_Fondo = new JLabel("New label");
@@ -163,3 +150,4 @@ public class InicioSesion extends JFrame {
 		contentPane.add(lbl_FondoTotal);
 	}
 }
+
