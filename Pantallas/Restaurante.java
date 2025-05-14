@@ -27,6 +27,7 @@ public class Restaurante extends JFrame {
 			public void run() {
 				try {
 					Restaurante frame = new Restaurante();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

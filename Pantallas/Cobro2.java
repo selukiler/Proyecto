@@ -32,6 +32,7 @@ public class Cobro2 extends JFrame {
 			public void run() {
 				try {
 					Cobro2 frame = new Cobro2();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

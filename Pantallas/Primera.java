@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
 
 public class Primera extends JFrame {
 
@@ -26,6 +27,7 @@ public class Primera extends JFrame {
 			public void run() {
 				try {
 					Primera frame = new Primera();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -128,5 +130,4 @@ public class Primera extends JFrame {
 		lbl_FondoTotal.setBounds(0, 0, 884, 661);
 		contentPane.add(lbl_FondoTotal);
 	}
-
 }

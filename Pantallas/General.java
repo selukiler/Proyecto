@@ -27,6 +27,7 @@ public class General extends JFrame {
 			public void run() {
 				try {
 					General frame = new General();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,23 +56,33 @@ public class General extends JFrame {
 		JButton BotonMesa1_ = new JButton("");
 		BotonMesa1_.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=1;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '1'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mesa = 0;
-					total += z.getInt("Precio");
 					mesa = z.getInt("Identificador");
-			
+					total=z.getInt("Precio");
+					
+					while (z.next()) {
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
 					b.setVisible(true);
-					
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+				
+				
 			}
 		});
 		BotonMesa1_.setOpaque(false);
@@ -83,20 +94,28 @@ public class General extends JFrame {
 		JButton BotonMesa2 = new JButton("");
 		BotonMesa2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=2;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '2'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
+					total=z.getInt("Precio");
 					mesa = 0;
-					total += z.getInt("Precio");
-					mesa = z.getInt("Identificador");
-			
+					while (z.next()) {
+						mesa = z.getInt("Identificador");
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
-					b.setVisible(true); 
-					
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -111,20 +130,28 @@ public class General extends JFrame {
 		JButton BotonMesa3 = new JButton("");
 		BotonMesa3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=3;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '3'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
+					total=z.getInt("Precio");
 					mesa = 0;
-					total += z.getInt("Precio");
-					mesa = z.getInt("Identificador");
-			
+					while (z.next()) {
+						mesa = z.getInt("Identificador");
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
 					b.setVisible(true);
-					
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -139,20 +166,28 @@ public class General extends JFrame {
 		JButton BotonMesa4 = new JButton("");
 		BotonMesa4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=4;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '4'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
+					total=z.getInt("Precio");
 					mesa = 0;
-					total += z.getInt("Precio");
-					mesa = z.getInt("Identificador");
-			
+					while (z.next()) {
+						mesa = z.getInt("Identificador");
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
 					b.setVisible(true);
-					
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -167,24 +202,33 @@ public class General extends JFrame {
 		JButton BotonMesa5 = new JButton("");
 		BotonMesa5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=5;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '5'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
+					total=z.getInt("Precio");
 					mesa = 0;
-					total += z.getInt("Precio");
-					mesa = z.getInt("Identificador");
-			
+					while (z.next()) {
+						mesa = z.getInt("Identificador");
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
 					b.setVisible(true);
-					
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
-			}
+				}
+			
 		});
 		BotonMesa5.setOpaque(false);
 		BotonMesa5.setContentAreaFilled(false);
@@ -195,22 +239,29 @@ public class General extends JFrame {
 		JButton BotonMesa6 = new JButton("");
 		BotonMesa6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=6;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '6'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
+					total=z.getInt("Precio");
 					mesa = 0;
-					total += z.getInt("Precio");
-					mesa = z.getInt("Identificador");
-			
+					while (z.next()) {
+						mesa = z.getInt("Identificador");
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
 					b.setVisible(true);
-					
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -224,20 +275,28 @@ public class General extends JFrame {
 		JButton BotonMesaAlta1 = new JButton("");
 		BotonMesaAlta1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=10;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '10'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
+					total=z.getInt("Precio");
 					mesa = 0;
-					total += z.getInt("Precio");
-					mesa = z.getInt("Identificador");
-			
+					while (z.next()) {
+						mesa = z.getInt("Identificador");
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
 					b.setVisible(true);
-					
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -252,20 +311,28 @@ public class General extends JFrame {
 		JButton BotonMesaAlta2 = new JButton("");
 		BotonMesaAlta2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=11;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '11'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
+					total=z.getInt("Precio");
 					mesa = 0;
-					total += z.getInt("Precio");
-					mesa = z.getInt("Identificador");
-			
+					while (z.next()) {
+						mesa = z.getInt("Identificador");
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
 					b.setVisible(true);
-					
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -280,20 +347,28 @@ public class General extends JFrame {
 		JButton BotonMesa7 = new JButton("");
 		BotonMesa7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=7;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '7'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
+					total=z.getInt("Precio");
 					mesa = 0;
-					total += z.getInt("Precio");
-					mesa = z.getInt("Identificador");
-			
+					while (z.next()) {
+						mesa = z.getInt("Identificador");
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
 					b.setVisible(true);
-					
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -308,20 +383,28 @@ public class General extends JFrame {
 		JButton BotonMesa8 = new JButton("");
 		BotonMesa8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=7;
+				
 				try {
 					x.conectar();
-					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '8'";
+					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '7'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
+					total=z.getInt("Precio");
 					mesa = 0;
-					total += z.getInt("Precio");
-					mesa = z.getInt("Identificador");
-			
+					while (z.next()) {
+						mesa = z.getInt("Identificador");
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
 					b.setVisible(true);
-					
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -336,20 +419,28 @@ public class General extends JFrame {
 		JButton BotonMesa9 = new JButton("");
 		BotonMesa9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=8;
+				
 				try {
 					x.conectar();
-					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '9'";
+					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '8'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
+					total=z.getInt("Precio");
 					mesa = 0;
-					total += z.getInt("Precio");
-					mesa = z.getInt("Identificador");
-			
+					while (z.next()) {
+						mesa = z.getInt("Identificador");
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
 					b.setVisible(true);
-					
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -364,22 +455,29 @@ public class General extends JFrame {
 		JButton BotonMesaAlta3 = new JButton("");
 		BotonMesaAlta3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=9;
+				
 				try {
 					x.conectar();
-					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '12'";
+					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '9'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
+					total=z.getInt("Precio");
 					mesa = 0;
-					total += z.getInt("Precio");
-					mesa = z.getInt("Identificador");
-			
+					while (z.next()) {
+						mesa = z.getInt("Identificador");
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
 					b.setVisible(true);
-					
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -393,22 +491,29 @@ public class General extends JFrame {
 		JButton BotonMesaAlta4 = new JButton("");
 		BotonMesaAlta4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=13;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '13'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
+					total=z.getInt("Precio");
 					mesa = 0;
-					total += z.getInt("Precio");
-					mesa = z.getInt("Identificador");
-			
+					while (z.next()) {
+						mesa = z.getInt("Identificador");
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
 					b.setVisible(true);
-					
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -422,20 +527,28 @@ public class General extends JFrame {
 		JButton BotonMesaAlta5 = new JButton("");
 		BotonMesaAlta5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=14;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '14'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					z.next();
 					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
+					total=z.getInt("Precio");
 					mesa = 0;
-					total += z.getInt("Precio");
-					mesa = z.getInt("Identificador");
-			
+					while (z.next()) {
+						mesa = z.getInt("Identificador");
+						total += z.getInt("Precio");
+					}
 					Cobro2 b = new Cobro2();
 					b.setVisible(true);
-					
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}

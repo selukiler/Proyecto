@@ -17,6 +17,7 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.JList;
 
 public class Cobro extends JFrame {
 
@@ -32,6 +33,7 @@ public class Cobro extends JFrame {
 			public void run() {
 				try {
 					Cobro frame = new Cobro();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

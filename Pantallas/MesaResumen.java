@@ -32,6 +32,7 @@ public class MesaResumen extends JFrame {
 			public void run() {
 				try {
 					MesaResumen frame = new MesaResumen();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

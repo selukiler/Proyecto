@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -29,6 +30,7 @@ public class RegistroProductos extends JFrame {
 			public void run() {
 				try {
 					RegistroProductos frame = new RegistroProductos();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,8 +44,8 @@ public class RegistroProductos extends JFrame {
 	 */
 	public RegistroProductos() {
 		ConexionBasedeDatos.ConexionMySQL x = new ConexionBasedeDatos.ConexionMySQL("root", "", "Registro");
-
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 900, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -63,7 +65,7 @@ public class RegistroProductos extends JFrame {
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(335, 424, 191, 49);
+		textField_2.setBounds(335, 424, 191, 44);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
@@ -88,7 +90,19 @@ public class RegistroProductos extends JFrame {
 				try {
 					x.conectar();
 					String sentencia="INSERT INTO carta(producto, precio, descripcion) VALUES('"+textField.getText()+"','"+textField_1.getText()+"','"+textField_2.getText()+"')";
-					x.ejecutarInsertDeleteUpdate(sentencia);
+					String nombre=textField.getText();
+					String precio=textField_1.getText();
+					String descripcion=textField_2.getText();
+					if(nombre.isEmpty()||precio.isEmpty()||descripcion.isEmpty()) 
+					{
+						JOptionPane.showMessageDialog(null, "Rellene todos los campos para poder registrar");
+					}
+					
+					else 
+					{
+						x.ejecutarInsertDeleteUpdate(sentencia);
+					}
+					
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}

@@ -38,6 +38,7 @@ public class Registro extends JFrame {
 			public void run() {
 				try {
 					Registro frame = new Registro();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
