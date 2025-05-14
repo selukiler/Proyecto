@@ -50,7 +50,8 @@ public class Primera extends JFrame {
 		JButton GenerarCuenta = new JButton("Generar cuenta");
 		GenerarCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				General g =new General();
+				g.setVisible(true);
 			}
 		});
 		GenerarCuenta.setOpaque(false);
@@ -66,6 +67,12 @@ public class Primera extends JFrame {
 		contentPane.add(CajaTexto4);
 		
 		JButton RegistrarProducto = new JButton("Registrar Producto");
+		RegistrarProducto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistroProductos r= new RegistroProductos();
+				r.setVisible(true);
+			}
+		});
 		RegistrarProducto.setOpaque(false);
 		RegistrarProducto.setFont(new Font("Calibri", Font.PLAIN, 20));
 		RegistrarProducto.setContentAreaFilled(false);

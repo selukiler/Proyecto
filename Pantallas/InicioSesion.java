@@ -89,6 +89,7 @@ public class InicioSesion extends JFrame {
 					if(encontrado==true) {
 						Primera n= new Primera();
 						n.setVisible(true);
+						dispose();
 						}
 					else {
 							JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta.\n"
