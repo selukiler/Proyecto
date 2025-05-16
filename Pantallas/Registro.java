@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class Registro extends JFrame {
 
@@ -38,6 +39,7 @@ public class Registro extends JFrame {
 			public void run() {
 				try {
 					Registro frame = new Registro();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,6 +54,8 @@ public class Registro extends JFrame {
 	ConexionBasedeDatos.ConexionMySQL x = new ConexionBasedeDatos.ConexionMySQL("root", "", "registro");
 
 	public Registro() {
+		setTitle("Registro");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Registro.class.getResource("/Imagenes/Logotop.jpg")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 900, 700);
 		contentPane = new JPanel();
@@ -135,17 +139,17 @@ public class Registro extends JFrame {
 		
 		JLabel logo = new JLabel("");
 		logo.setBackground(Color.BLACK);
-		logo.setIcon(new ImageIcon(InicioSesion.class.getResource("/Imagenes/logo.png")));
-		logo.setBounds(392, 11, 136, 96);
+		logo.setIcon(new ImageIcon(Registro.class.getResource("/Imagenes/Logotop.jpg")));
+		logo.setBounds(330, 33, 272, 96);
 		contentPane.add(logo);
 		
 		JLabel lbl_Fondo = new JLabel("New label");
-		lbl_Fondo.setIcon(new ImageIcon(InicioSesion.class.getResource("/Imagenes/inicio 2.0 (2).png")));
+		lbl_Fondo.setIcon(new ImageIcon(InicioSesion.class.getResource("/Imagenes/inicio 2.0.png")));
 		lbl_Fondo.setBounds(315, 153, 303, 425);
 		contentPane.add(lbl_Fondo);
 		
 		JLabel lbl_FondoTotal = new JLabel("New label");
-		lbl_FondoTotal.setIcon(new ImageIcon(InicioSesion.class.getResource("/Imagenes/fondopestana.jpg")));
+		lbl_FondoTotal.setIcon(new ImageIcon(Registro.class.getResource("/Imagenes/fondoelegante.jpg")));
 		lbl_FondoTotal.setBounds(0, 0, 884, 661);
 		contentPane.add(lbl_FondoTotal);
 	}

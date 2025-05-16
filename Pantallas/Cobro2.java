@@ -17,11 +17,10 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.JList;
 import java.awt.Color;
 import java.awt.Toolkit;
 
-public class Cobro extends JFrame {
+public class Cobro2 extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -34,7 +33,7 @@ public class Cobro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Cobro frame = new Cobro();
+					Cobro2 frame = new Cobro2();
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -48,9 +47,9 @@ public class Cobro extends JFrame {
 	 * Create the frame.
 	 */
 	ConexionBasedeDatos.ConexionMySQL x = new ConexionBasedeDatos.ConexionMySQL("root", "", "Registro");
-	public Cobro() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Cobro.class.getResource("/Imagenes/Logotop.jpg")));
-		setTitle("Cobro");
+	public Cobro2() {
+		setTitle("cobro");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Cobro2.class.getResource("/Imagenes/Logotop.jpg")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 900, 700);
 		contentPane = new JPanel();
@@ -69,7 +68,7 @@ public class Cobro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					x.conectar();
-					String sentencia= "DELETE FROM seleccion_producto WHERE Identificador= '"+Restaurante.mesa+"'";
+					String sentencia= "DELETE FROM seleccion_producto WHERE Identificador= '"+General.mesa+"'";
 					x.ejecutarInsertDeleteUpdate(sentencia);
 					dispose();				
 					} 
@@ -90,12 +89,12 @@ public class Cobro extends JFrame {
 		texto.setBounds(315, 280, 254, 101);
 		contentPane.add(texto);
 		texto.setColumns(10);
-		texto.setText(Integer.toString(Restaurante.total)+"€");
+		texto.setText(Integer.toString(General.total)+"€");
 		
 		
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Cobro.class.getResource("/Imagenes/marmolnegro.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(Cobro2.class.getResource("/Imagenes/fondoelegante.jpg")));
 		lblNewLabel.setBounds(0, 0, 884, 661);
 		contentPane.add(lblNewLabel);
 		

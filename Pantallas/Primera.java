@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import java.awt.Toolkit;
 
 public class Primera extends JFrame {
 
@@ -26,6 +28,7 @@ public class Primera extends JFrame {
 			public void run() {
 				try {
 					Primera frame = new Primera();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,6 +41,8 @@ public class Primera extends JFrame {
 	 * Create the frame.
 	 */
 	public Primera() {
+		setTitle("Inicio");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Primera.class.getResource("/Imagenes/Logotop.jpg")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 900, 700);
 		contentPane = new JPanel();
@@ -50,7 +55,8 @@ public class Primera extends JFrame {
 		JButton GenerarCuenta = new JButton("Generar cuenta");
 		GenerarCuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				General g =new General();
+				g.setVisible(true);
 			}
 		});
 		GenerarCuenta.setOpaque(false);
@@ -66,6 +72,12 @@ public class Primera extends JFrame {
 		contentPane.add(CajaTexto4);
 		
 		JButton RegistrarProducto = new JButton("Registrar Producto");
+		RegistrarProducto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistroProductos r= new RegistroProductos();
+				r.setVisible(true);
+			}
+		});
 		RegistrarProducto.setOpaque(false);
 		RegistrarProducto.setFont(new Font("Calibri", Font.PLAIN, 20));
 		RegistrarProducto.setContentAreaFilled(false);
@@ -99,11 +111,18 @@ public class Primera extends JFrame {
 		
 		JLabel logo = new JLabel("");
 		logo.setBackground(Color.BLACK);
-		logo.setIcon(new ImageIcon(Primera.class.getResource("/Imagenes/logo.png")));
-		logo.setBounds(387, 24, 136, 96);
+		logo.setIcon(new ImageIcon(Primera.class.getResource("/Imagenes/Logotop.jpg")));
+		logo.setBounds(329, 29, 289, 96);
 		contentPane.add(logo);
 		
 		JButton TomarNota = new JButton("Tomar Nota");
+		TomarNota.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Mesas m = new Mesas();
+				m.setVisible(true);
+			}
+			
+		});
 		TomarNota.setOpaque(false);
 		TomarNota.setFont(new Font("Calibri", Font.PLAIN, 20));
 		TomarNota.setContentAreaFilled(false);
@@ -117,9 +136,8 @@ public class Primera extends JFrame {
 		contentPane.add(CajaTexto3);
 		
 		JLabel lbl_FondoTotal = new JLabel("New label");
-		lbl_FondoTotal.setIcon(new ImageIcon(InicioSesion.class.getResource("/Imagenes/fondopestana.jpg")));
+		lbl_FondoTotal.setIcon(new ImageIcon(Primera.class.getResource("/Imagenes/marmolnegro.jpg")));
 		lbl_FondoTotal.setBounds(0, 0, 884, 661);
 		contentPane.add(lbl_FondoTotal);
 	}
-
 }

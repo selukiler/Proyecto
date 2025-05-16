@@ -18,6 +18,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.Color;
+import java.awt.Toolkit;
 
 public class MesaResumen extends JFrame {
 
@@ -32,6 +34,7 @@ public class MesaResumen extends JFrame {
 			public void run() {
 				try {
 					MesaResumen frame = new MesaResumen();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,6 +47,8 @@ public class MesaResumen extends JFrame {
 	 * Create the frame.
 	 */
 	public MesaResumen() {
+		setTitle("Resumen de mesa");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MesaResumen.class.getResource("/Imagenes/Logotop.jpg")));
 		ConexionBasedeDatos.ConexionMySQL x = new ConexionBasedeDatos.ConexionMySQL("root", "", "Registro");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 900, 700);
@@ -54,9 +59,9 @@ public class MesaResumen extends JFrame {
 		contentPane.setLayout(null);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBackground(SystemColor.info);
+		textArea.setBackground(new Color(255, 255, 255));
 		textArea.setFont(new Font("Calibri", Font.BOLD, 28));
-		textArea.setBounds(203, 90, 489, 423);
+		textArea.setBounds(197, 119, 489, 423);
 		contentPane.add(textArea);
 		textArea.setText(Restaurante.mensaje);
 		
@@ -83,11 +88,11 @@ public class MesaResumen extends JFrame {
 				
 			}
 		});
-		GenerarCuenta.setBounds(344, 539, 197, 44);
+		GenerarCuenta.setBounds(343, 559, 197, 44);
 		contentPane.add(GenerarCuenta);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(MesaResumen.class.getResource("/Imagenes/fondopestana.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(MesaResumen.class.getResource("/Imagenes/marmolnegro.jpg")));
 		lblNewLabel.setBounds(0, 0, 884, 661);
 		contentPane.add(lblNewLabel);
 		

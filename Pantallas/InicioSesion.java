@@ -25,6 +25,7 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class InicioSesion extends JFrame {
 
@@ -41,6 +42,7 @@ public class InicioSesion extends JFrame {
 			public void run() {
 				try {
 					InicioSesion frame = new InicioSesion();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -54,6 +56,8 @@ public class InicioSesion extends JFrame {
 	 */
 	ConexionBasedeDatos.ConexionMySQL x = new ConexionBasedeDatos.ConexionMySQL("root", "", "Registro");
 	public InicioSesion() {
+		setTitle("Inicio de sesion");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(InicioSesion.class.getResource("/Imagenes/Logotop.jpg")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 900, 700);
 		contentPane = new JPanel();
@@ -89,6 +93,7 @@ public class InicioSesion extends JFrame {
 					if(encontrado==true) {
 						Primera n= new Primera();
 						n.setVisible(true);
+						dispose();
 						}
 					else {
 							JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta.\n"
@@ -112,7 +117,7 @@ public class InicioSesion extends JFrame {
 				r.setVisible(true);
 			}
 		});
-		btn_CrearCuenta.setBackground(new Color(184, 134, 11));
+		btn_CrearCuenta.setBackground(new Color(192, 192, 192));
 		btn_CrearCuenta.setFont(new Font("Calibri", Font.BOLD, 14));
 		btn_CrearCuenta.setBounds(737, 42, 122, 39);
 		contentPane.add(btn_CrearCuenta);
@@ -148,17 +153,17 @@ public class InicioSesion extends JFrame {
 		
 		JLabel logo = new JLabel("");
 		logo.setBackground(Color.BLACK);
-		logo.setIcon(new ImageIcon(InicioSesion.class.getResource("/Imagenes/logo.png")));
-		logo.setBounds(30, 26, 136, 96);
+		logo.setIcon(new ImageIcon(InicioSesion.class.getResource("/Imagenes/Logotop.jpg")));
+		logo.setBounds(329, 22, 303, 96);
 		contentPane.add(logo);
 		
 		JLabel lbl_Fondo = new JLabel("New label");
-		lbl_Fondo.setIcon(new ImageIcon(InicioSesion.class.getResource("/Imagenes/inicio 2.0 (2).png")));
+		lbl_Fondo.setIcon(new ImageIcon(InicioSesion.class.getResource("/Imagenes/inicio 2.0.png")));
 		lbl_Fondo.setBounds(315, 153, 303, 425);
 		contentPane.add(lbl_Fondo);
 		
-		JLabel lbl_FondoTotal = new JLabel("New label");
-		lbl_FondoTotal.setIcon(new ImageIcon(InicioSesion.class.getResource("/Imagenes/fondopestana.jpg")));
+		JLabel lbl_FondoTotal = new JLabel("");
+		lbl_FondoTotal.setIcon(new ImageIcon(InicioSesion.class.getResource("/Imagenes/fondoelegante.jpg")));
 		lbl_FondoTotal.setBounds(0, 0, 884, 661);
 		contentPane.add(lbl_FondoTotal);
 	}

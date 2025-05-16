@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 
-public class Restaurante extends JFrame {
+public class General extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -27,7 +27,7 @@ public class Restaurante extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Restaurante frame = new Restaurante();
+					General frame = new General();
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -45,9 +45,9 @@ public class Restaurante extends JFrame {
 	public static int mesa = 0;
 	ConexionBasedeDatos.ConexionMySQL x = new ConexionBasedeDatos.ConexionMySQL("root", "", "Registro");
 
-	public Restaurante() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Restaurante.class.getResource("/Imagenes/Logotop.jpg")));
-		setTitle("Mapa restaurante");
+	public General() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(General.class.getResource("/Imagenes/Logotop.jpg")));
+		setTitle("General");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 804, 735);
 		contentPane = new JPanel();
@@ -56,64 +56,70 @@ public class Restaurante extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JButton BotonMesa1 = new JButton("");
-		BotonMesa1.addActionListener(new ActionListener() {
+		JButton BotonMesa1_ = new JButton("");
+		BotonMesa1_.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=1;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '1'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					total = 0;
-					mesa = 0;
-					String Producto = "";
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
-					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
-						total += z.getInt("Precio");
-						mesa = z.getInt("Identificador");
-						
-
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					else {
+					total = 0;
+					mesa = z.getInt("Identificador");
+					total=z.getInt("Precio");
+					
+					while (z.next()) {
+						total += z.getInt("Precio");
+					}
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				
+				
 			}
 		});
-		BotonMesa1.setOpaque(false);
-		BotonMesa1.setContentAreaFilled(false);
-		BotonMesa1.setBorderPainted(false);
-		BotonMesa1.setBounds(24, 23, 118, 102);
-		contentPane.add(BotonMesa1);
+		BotonMesa1_.setOpaque(false);
+		BotonMesa1_.setContentAreaFilled(false);
+		BotonMesa1_.setBorderPainted(false);
+		BotonMesa1_.setBounds(24, 23, 118, 102);
+		contentPane.add(BotonMesa1_);
 
 		JButton BotonMesa2 = new JButton("");
 		BotonMesa2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=2;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '2'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					String Producto = "";
-					mesa = 0;
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
+					total=z.getInt("Precio");
+					mesa = 0;
 					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
 						mesa = z.getInt("Identificador");
 						total += z.getInt("Precio");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -127,26 +133,29 @@ public class Restaurante extends JFrame {
 		JButton BotonMesa3 = new JButton("");
 		BotonMesa3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=3;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '3'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					String Producto = "";
-					mesa = 0;
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
+					total=z.getInt("Precio");
+					mesa = 0;
 					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
 						mesa = z.getInt("Identificador");
 						total += z.getInt("Precio");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -160,26 +169,29 @@ public class Restaurante extends JFrame {
 		JButton BotonMesa4 = new JButton("");
 		BotonMesa4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=4;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '4'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					String Producto = "";
-					mesa = 0;
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
+					total=z.getInt("Precio");
+					mesa = 0;
 					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
 						mesa = z.getInt("Identificador");
 						total += z.getInt("Precio");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -193,29 +205,33 @@ public class Restaurante extends JFrame {
 		JButton BotonMesa5 = new JButton("");
 		BotonMesa5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=5;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '5'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					String Producto = "";
-					mesa = 0;
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
+					total=z.getInt("Precio");
+					mesa = 0;
 					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
 						mesa = z.getInt("Identificador");
 						total += z.getInt("Precio");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			}
+				}
+			
 		});
 		BotonMesa5.setOpaque(false);
 		BotonMesa5.setContentAreaFilled(false);
@@ -226,26 +242,29 @@ public class Restaurante extends JFrame {
 		JButton BotonMesa6 = new JButton("");
 		BotonMesa6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=6;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '6'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					String Producto = "";
-					mesa = 0;
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
+					total=z.getInt("Precio");
+					mesa = 0;
 					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
 						mesa = z.getInt("Identificador");
 						total += z.getInt("Precio");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -259,26 +278,29 @@ public class Restaurante extends JFrame {
 		JButton BotonMesaAlta1 = new JButton("");
 		BotonMesaAlta1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=10;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '10'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					String Producto = "";
-					mesa = 0;
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
+					total=z.getInt("Precio");
+					mesa = 0;
 					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
 						mesa = z.getInt("Identificador");
 						total += z.getInt("Precio");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -292,26 +314,29 @@ public class Restaurante extends JFrame {
 		JButton BotonMesaAlta2 = new JButton("");
 		BotonMesaAlta2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=11;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '11'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					String Producto = "";
-					mesa = 0;
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
+					total=z.getInt("Precio");
+					mesa = 0;
 					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
 						mesa = z.getInt("Identificador");
 						total += z.getInt("Precio");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -325,26 +350,29 @@ public class Restaurante extends JFrame {
 		JButton BotonMesa7 = new JButton("");
 		BotonMesa7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=7;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '7'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					String Producto = "";
-					mesa = 0;
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
+					total=z.getInt("Precio");
+					mesa = 0;
 					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
 						mesa = z.getInt("Identificador");
 						total += z.getInt("Precio");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -358,26 +386,29 @@ public class Restaurante extends JFrame {
 		JButton BotonMesa8 = new JButton("");
 		BotonMesa8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=8;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '8'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					String Producto = "";
-					mesa = 0;
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
+					total=z.getInt("Precio");
+					mesa = 0;
 					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
 						mesa = z.getInt("Identificador");
 						total += z.getInt("Precio");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -391,26 +422,29 @@ public class Restaurante extends JFrame {
 		JButton BotonMesa9 = new JButton("");
 		BotonMesa9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=9;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '9'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					String Producto = "";
-					mesa = 0;
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
+					total=z.getInt("Precio");
+					mesa = 0;
 					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
 						mesa = z.getInt("Identificador");
 						total += z.getInt("Precio");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -424,26 +458,29 @@ public class Restaurante extends JFrame {
 		JButton BotonMesaAlta3 = new JButton("");
 		BotonMesaAlta3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=12;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '12'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					String Producto = "";
-					mesa = 0;
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
+					total=z.getInt("Precio");
+					mesa = 0;
 					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
 						mesa = z.getInt("Identificador");
 						total += z.getInt("Precio");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -457,26 +494,29 @@ public class Restaurante extends JFrame {
 		JButton BotonMesaAlta4 = new JButton("");
 		BotonMesaAlta4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=13;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '13'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					String Producto = "";
-					mesa = 0;
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
+					total=z.getInt("Precio");
+					mesa = 0;
 					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
 						mesa = z.getInt("Identificador");
 						total += z.getInt("Precio");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -490,26 +530,29 @@ public class Restaurante extends JFrame {
 		JButton BotonMesaAlta5 = new JButton("");
 		BotonMesaAlta5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int j=14;
+				
 				try {
 					x.conectar();
 					String sentencia = "SELECT * FROM seleccion_producto WHERE Identificador= '14'";
 					ResultSet z = x.ejecutarSelect(sentencia);
-					String Producto = "";
-					mesa = 0;
+					
+					if(!z.next()) 
+					{
+						JOptionPane.showMessageDialog(null, "Mesa vacia o cobrada");
+					}
+					else {
 					total = 0;
-					mensaje = "";
-					mensaje = "           Producto      " + "              Precio";
+					total=z.getInt("Precio");
+					mesa = 0;
 					while (z.next()) {
-
-						mensaje += "\n          " + z.getString("Producto") + "                      "
-								+ z.getInt("Precio");
 						mesa = z.getInt("Identificador");
 						total += z.getInt("Precio");
 					}
-					MesaResumen a = new MesaResumen();
-					a.setVisible(true);
+					Cobro2 b = new Cobro2();
+					b.setVisible(true);
+					}
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -537,5 +580,4 @@ public class Restaurante extends JFrame {
 		lblNewLabel.setBounds(0, 0, 864, 700);
 		contentPane.add(lblNewLabel);
 	}
-
 }
