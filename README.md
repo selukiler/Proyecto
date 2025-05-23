@@ -16,6 +16,7 @@ Ruta: TPV/src/Pantallas
 Aquí se encuentran todas las páginas del proyecto, ordenadas de la siguiente manera:
 
 📄 Páginas del Proyecto
+
 🔐 InicioSesion
 
 Cada camarero debe iniciar sesión para entrar al TPV.
