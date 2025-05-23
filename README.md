@@ -8,8 +8,9 @@ Una descripción más detallada y técnica del proyecto, incluyendo sus principa
 
 La parte de programacion de programacion el lenguaje que se a usado es 100% Java y creado en la ID de eclipse, la base de datos es SQL y hemos utilizado xampp, PHPmyAdmin y hemos usado servidor local, a la vez que se iba desarrollando el proyecto hemos se ha subido en los repositorios de GitHub haciendo commit con las ramas de cada uno y sus partes.
 
-🖥️ ## Estructura del Proyecto TPV
+🖥️  Estructura del Proyecto TPV
 📁 Carpeta Principal
+
 Ruta: TPV/src/Pantallas
 
 Aquí se encuentran todas las páginas del proyecto, ordenadas de la siguiente manera:
