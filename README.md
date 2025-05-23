@@ -8,38 +8,128 @@ Una descripción más detallada y técnica del proyecto, incluyendo sus principa
 
 La parte de programacion de programacion el lenguaje que se a usado es 100% Java y creado en la ID de eclipse, la base de datos es SQL y hemos utilizado xampp, PHPmyAdmin y hemos usado servidor local, a la vez que se iba desarrollando el proyecto hemos se ha subido en los repositorios de GitHub haciendo commit con las ramas de cada uno y sus partes.
 
-La parte de programacion se almacena dentro de la carpetas TPV/src/Pantallas se puede ver todas las paginas que contiene el proyecto desde el principio son;
--InicioSesion, donde cada camarero se tiene que registrar para poder entrar dentro de la TPV, si no tiene creada cuenta se encuentra un boton para crear una
--Registro, crea una cuenta con la contraseña
--General, es el inicio de la TPV donde aparece todo los apartados de la TPV
--Restaurante, aparece una imagen de el local puedes pulsar las mesas para ver lo que hay en cada mesa para volver al inicio pulsas la barra y vuelves al principio
--MesaResumen, aparece todos los pedidos y hay un boton de cobro
--Cobro, es la pagina que aparece la suma de todos los productos
--RegistroProductos, esta pagina es para agregar nuevos platos o menu en la carta
--Mesas, esta pantalla aparece el local pero es para coger la comanda, al pulsar la mesa se abre la siguiente pagina.
--Comanda, aparece una lista con todo los producto, se pueden selecciona y agrega a la mesa para el cobro
--Mesas_Cobro, aparece el mapa del local
--Cobro2, genera la cuenta directamente para evitar pasos y realizar el cobro directo
+🖥️ Estructura del Proyecto TPV
+📁 Carpeta Principal
+Ruta: TPV/src/Pantallas
 
-Para base de datos hemos usado XAMPP, tenemos que iniciar apache y MySQL, una vez iniciado entramos en Admin MySQL y nos dirige a PHPmyAdmin que se abre en el navegador. La base de datos se debe llamar registro, donde podemos ver la funcion total_gastado que suma todos los producto de la misma mesa y te devuelve un entero, y las tablas;
--Auditoria_productos, es un registro de cuando agregamos un producto a la tabla
--carta, aparece todos los productos de la carta
--seleccion_productos, se agregan los producto cuando se coge comanda
--users, se guarda los usuarios registrados
-El trigger cada vez que detecta un insert en la tabla carta crea un registro automatico en la tabla auditoria_roductos registrando fecha y hora nombre de producto y un id auto incremental de clave primaria.
-La union de tablas son por la PK son tres tablas realacionadas que teinen en comun la columna producto, las tablas son;
-seleccion_producto, carta y auditoria_productos.
-La tabla users queda sin unir.
+Aquí se encuentran todas las páginas del proyecto, ordenadas de la siguiente manera:
 
-En Github vemos en los repositorios que hay tres ramas main donde se encuentra el resultado final del proyecto y las otras dos ramas : joseluis y pepe, cada rama tiene el contenido que ha trabajado cada uno.
-JUnit hay creados 7 test JUnit que cada uno maneja un posible fallo o limite de logica en el programa, las pruebas son:
--registroProductos_camposVacios_noDebeRegistrar
--iniciosesion_usuarioVacio_noInsertar
--CamposVacios
--ResumenCobroMesaVacia
--testMesasConIdentificadorInvalido
--testCamposCompletos
--testCamposProductoVacio
+📄 Páginas del Proyecto
+🔐 InicioSesion
+
+Cada camarero debe iniciar sesión para entrar al TPV.
+
+Si no tiene cuenta, hay un botón para crear una nueva cuenta.
+
+📝 Registro
+
+Permite crear una cuenta con usuario y contraseña.
+
+🏠 General
+
+Pantalla principal del TPV donde se muestran todos los apartados.
+
+🍽️ Restaurante
+
+Muestra una imagen del local.
+
+Puedes pulsar sobre las mesas para ver sus pedidos.
+
+Para volver al inicio, se pulsa sobre la barra.
+
+📋 MesaResumen
+
+Muestra todos los pedidos de una mesa.
+
+Incluye un botón para realizar el cobro.
+
+💰 Cobro
+
+Muestra la suma total de los productos de la mesa.
+
+➕ RegistroProductos
+
+Permite agregar nuevos platos o menús a la carta.
+
+🪑 Mesas
+
+Vista del local para tomar la comanda.
+
+Al pulsar una mesa, se abre la siguiente pantalla.
+
+📦 Comanda
+
+Lista de productos disponibles para seleccionar y agregar a la mesa.
+
+🗺️ Mesas_Cobro
+
+Vista del local centrada en el proceso de cobro.
+
+💳 Cobro2
+
+Genera directamente la cuenta final para un cobro rápido.
+
+🗄️ Base de Datos (XAMPP + MySQL)
+🔧 Configuración Inicial:
+Iniciar Apache y MySQL desde XAMPP.
+
+Entrar en Admin MySQL → Se abre phpMyAdmin en el navegador.
+
+🗃️ Base de Datos: registro
+📌 Tablas:
+🕵️ auditoria_productos:
+Registra cada vez que se agrega un producto a la carta (con fecha, hora, nombre y ID).
+
+📜 carta:
+Contiene todos los productos disponibles en la carta.
+
+🛒 seleccion_productos:
+Se agregan aquí los productos seleccionados en la comanda.
+
+👤 users:
+Almacena los usuarios registrados.
+
+🔁 Trigger:
+Al hacer un INSERT en carta, se crea un registro automáticamente en auditoria_productos con:
+
+Fecha y hora
+
+Nombre del producto
+
+ID incremental (clave primaria)
+
+🔗 Relaciones:
+Las tablas carta, seleccion_productos y auditoria_productos están relacionadas por la columna producto.
+
+La tabla users está independiente, no se une a otras.
+
+⚙️ Función:
+total_gastado: Suma los productos de la misma mesa y devuelve el total como un número entero.
+
+💻 Repositorio en GitHub
+🌿 Ramas:
+main: Contiene el resultado final del proyecto.
+
+joseluis: Trabajo individual de José Luis.
+
+pepe: Trabajo individual de Pepe.
+
+✅ Pruebas JUnit
+Hay 7 tests creados para verificar la lógica y errores del sistema:
+
+🧪 registroProductos_camposVacios_noDebeRegistrar
+
+🧪 iniciosesion_usuarioVacio_noInsertar
+
+🧪 CamposVacios
+
+🧪 ResumenCobroMesaVacia
+
+🧪 testMesasConIdentificadorInvalido
+
+🧪 testCamposCompletos
+
+🧪 testCamposProductoVacio
 
 ## Visuales
 
