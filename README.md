@@ -88,4 +88,4 @@ Si tienes algún problema o sugerencia, por favor abre un problema (https://gith
 
 ## Autores ✒️
 
-- **Jose Antonio Salado Muñoz** y **Jose Luis Fernadez Cabeza
+- **Jose Antonio Salado Muñoz** y **Jose Luis Fernadez Cabeza**
