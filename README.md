@@ -1,4 +1,4 @@
-# TPV MAster
+# TPV Master
 
 TPVMaster, esta dirigido a bares/restaurantes para gestionar las ventas y cobrar a los clientes.
 
