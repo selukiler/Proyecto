@@ -115,14 +115,17 @@ ID incremental (clave primaria)
 total_gastado: Suma los productos de la misma mesa y devuelve el total como un número entero.
 
 💻 Repositorio en GitHub
+
 🌿 Ramas:
-main: Contiene el resultado final del proyecto.
 
-joseluis: Trabajo individual de José Luis.
+- main: Contiene el resultado final del proyecto.
 
-pepe: Trabajo individual de Pepe.
+- joseluis: Trabajo individual de José Luis.
+
+- pepe: Trabajo individual de Pepe.
 
 ✅ Pruebas JUnit
+
 Hay 7 tests creados para verificar la lógica y errores del sistema:
 
 🧪 registroProductos_camposVacios_noDebeRegistrar
@@ -144,12 +147,15 @@ Hay 7 tests creados para verificar la lógica y errores del sistema:
 Capturas de pantalla, videos o GIFs que demuestran lo que hace el proyecto y cómo usarlo.
 
 ![image](https://github.com/user-attachments/assets/02d3b33c-4123-4c1e-a5d7-16c4571db0ae)
+
 Todas las pantallas del proyecto
 
 ![image](https://github.com/user-attachments/assets/2129deda-ac15-4a6a-b565-b9070cb60a2a)
+
 Base de datos
 
 ![image](https://github.com/user-attachments/assets/c9a1fd0e-03cf-4e70-a55a-5b6ff67c9f21)
+-
 Proyecto en GitHub
 
 ## Empezando 🚀
