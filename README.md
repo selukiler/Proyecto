@@ -19,66 +19,70 @@ Aquí se encuentran todas las páginas del proyecto, ordenadas de la siguiente m
 
 🔐 InicioSesion
 
-Cada camarero debe iniciar sesión para entrar al TPV.
+- Cada camarero debe iniciar sesión para entrar al TPV.
 
-Si no tiene cuenta, hay un botón para crear una nueva cuenta.
+- Si no tiene cuenta, hay un botón para crear una nueva cuenta.
 
 📝 Registro
 
-Permite crear una cuenta con usuario y contraseña.
+- Permite crear una cuenta con usuario y contraseña.
 
 🏠 General
 
-Pantalla principal del TPV donde se muestran todos los apartados.
+- Pantalla principal del TPV donde se muestran todos los apartados.
 
 🍽️ Restaurante
 
-Muestra una imagen del local.
+- Muestra una imagen del local.
 
-Puedes pulsar sobre las mesas para ver sus pedidos.
+- Puedes pulsar sobre las mesas para ver sus pedidos.
 
-Para volver al inicio, se pulsa sobre la barra.
+- Para volver al inicio, se pulsa sobre la barra.
 
 📋 MesaResumen
 
-Muestra todos los pedidos de una mesa.
+- Muestra todos los pedidos de una mesa.
 
-Incluye un botón para realizar el cobro.
+- Incluye un botón para realizar el cobro.
 
 💰 Cobro
 
-Muestra la suma total de los productos de la mesa.
+- Muestra la suma total de los productos de la mesa.
 
 ➕ RegistroProductos
 
-Permite agregar nuevos platos o menús a la carta.
+- Permite agregar nuevos platos o menús a la carta.
 
 🪑 Mesas
 
-Vista del local para tomar la comanda.
+- Vista del local para tomar la comanda.
 
-Al pulsar una mesa, se abre la siguiente pantalla.
+- Al pulsar una mesa, se abre la siguiente pantalla.
 
 📦 Comanda
 
-Lista de productos disponibles para seleccionar y agregar a la mesa.
+- Lista de productos disponibles para seleccionar y agregar a la mesa.
 
 🗺️ Mesas_Cobro
 
-Vista del local centrada en el proceso de cobro.
+ - Vista del local centrada en el proceso de cobro.
 
 💳 Cobro2
 
-Genera directamente la cuenta final para un cobro rápido.
+- Genera directamente la cuenta final para un cobro rápido.
 
 🗄️ Base de Datos (XAMPP + MySQL)
+
 🔧 Configuración Inicial:
+
 Iniciar Apache y MySQL desde XAMPP.
 
 Entrar en Admin MySQL → Se abre phpMyAdmin en el navegador.
 
 🗃️ Base de Datos: registro
+
 📌 Tablas:
+
 🕵️ auditoria_productos:
 Registra cada vez que se agrega un producto a la carta (con fecha, hora, nombre y ID).
 
@@ -101,11 +105,13 @@ Nombre del producto
 ID incremental (clave primaria)
 
 🔗 Relaciones:
-Las tablas carta, seleccion_productos y auditoria_productos están relacionadas por la columna producto.
 
-La tabla users está independiente, no se une a otras.
+- Las tablas carta, seleccion_productos y auditoria_productos están relacionadas por la columna producto.
+
+- La tabla users está independiente, no se une a otras.
 
 ⚙️ Función:
+
 total_gastado: Suma los productos de la misma mesa y devuelve el total como un número entero.
 
 💻 Repositorio en GitHub
