@@ -1,4 +1,4 @@
-# Título del Proyecto
+# TPV MAster
 
 TPVMaster, esta dirigido a bares/restaurantes para gestionar las ventas y cobrar a los clientes.
 
