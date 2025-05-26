@@ -1,195 +1,205 @@
 # TPV Master
 
-TPVMaster, esta dirigido a bares/restaurantes para gestionar las ventas y cobrar a los clientes.
+**TPV Master** es una aplicación diseñada para bares y restaurantes, pensada para gestionar ventas, comandas y cobros de manera sencilla y eficiente.
 
-## Descripción
+---
 
-Una descripción más detallada y técnica del proyecto, incluyendo sus principales características, su propósito y cómo funciona.
+## 📌 Descripción del Proyecto
 
-La parte de programacion de programacion el lenguaje que se a usado es 100% Java y creado en la ID de eclipse, la base de datos es SQL y hemos utilizado xampp, PHPmyAdmin y hemos usado servidor local, a la vez que se iba desarrollando el proyecto hemos se ha subido en los repositorios de GitHub haciendo commit con las ramas de cada uno y sus partes.
+TPV Master permite a los camareros iniciar sesión, gestionar mesas, registrar productos, tomar comandas y realizar cobros. Está desarrollado íntegramente en **Java** usando **Eclipse** como entorno de desarrollo. La base de datos está gestionada mediante **MySQL** a través de **XAMPP y phpMyAdmin**, usando un servidor local.
 
-🖥️  Estructura del Proyecto TPV
-📁 Carpeta Principal
+Durante el desarrollo, se utilizó **GitHub** como sistema de control de versiones, con ramas individuales para cada desarrollador.
 
-Ruta: TPV/src/Pantallas
+---
 
-Aquí se encuentran todas las páginas del proyecto, ordenadas de la siguiente manera:
+## 🗂️ Estructura del Proyecto
 
-📄 Páginas del Proyecto
+**Ruta principal:** `TPV/src/Pantallas`
 
-🔐 InicioSesion
+### Pantallas del Proyecto
 
-- Cada camarero debe iniciar sesión para entrar al TPV.
+* 🔐 **InicioSesion**
 
-- Si no tiene cuenta, hay un botón para crear una nueva cuenta.
+  * Inicio de sesión para camareros.
+  * Opción para crear una nueva cuenta.
 
-📝 Registro
+* 📝 **Registro**
 
-- Permite crear una cuenta con usuario y contraseña.
+  * Formulario para crear nuevos usuarios.
 
-🏠 General
+* 🏠 **General**
 
-- Pantalla principal del TPV donde se muestran todos los apartados.
+  * Vista principal del TPV con acceso a todas las funcionalidades.
 
-🍽️ Restaurante
+* 🍽️ **Restaurante**
 
-- Muestra una imagen del local.
+  * Muestra la vista del local.
+  * Interacción con las mesas para ver pedidos.
 
-- Puedes pulsar sobre las mesas para ver sus pedidos.
+* 📋 **MesaResumen**
 
-- Para volver al inicio, se pulsa sobre la barra.
+  * Detalle de los pedidos por mesa.
+  * Botón para iniciar el proceso de cobro.
 
-📋 MesaResumen
+* 💰 **Cobro**
 
-- Muestra todos los pedidos de una mesa.
+  * Muestra el total de la cuenta.
 
-- Incluye un botón para realizar el cobro.
+* ➕ **RegistroProductos**
 
-💰 Cobro
+  * Permite registrar nuevos productos o menús.
 
-- Muestra la suma total de los productos de la mesa.
+* 🪑 **Mesas**
 
-➕ RegistroProductos
+  * Vista del local para tomar comandas.
 
-- Permite agregar nuevos platos o menús a la carta.
+* 📦 **Comanda**
 
-🪑 Mesas
+  * Selección y asignación de productos a una mesa.
 
-- Vista del local para tomar la comanda.
+* 🗺️ **Mesas\_Cobro**
 
-- Al pulsar una mesa, se abre la siguiente pantalla.
+  * Vista centrada en la gestión de cobros.
 
-📦 Comanda
+* 💳 **Cobro2**
 
-- Lista de productos disponibles para seleccionar y agregar a la mesa.
+  * Generación rápida del ticket final.
 
-🗺️ Mesas_Cobro
+---
 
- - Vista del local centrada en el proceso de cobro.
+## 🗄️ Base de Datos (XAMPP + MySQL)
 
-💳 Cobro2
+### Configuración Inicial
 
-- Genera directamente la cuenta final para un cobro rápido.
+1. Iniciar Apache y MySQL desde XAMPP.
+2. Acceder a **phpMyAdmin**.
+3. Crear la base de datos llamada `registro`.
+4. Importar el archivo `.sql` disponible en el repositorio.
 
-🗄️ Base de Datos (XAMPP + MySQL)
+### Tablas del Proyecto
 
-🔧 Configuración Inicial:
+* `auditoria_productos`
+  Registra cada inserción en la tabla `carta` (fecha, hora, producto, ID).
 
-Iniciar Apache y MySQL desde XAMPP.
+* `carta`
+  Contiene los productos disponibles.
 
-Entrar en Admin MySQL → Se abre phpMyAdmin en el navegador.
+* `seleccion_productos`
+  Guarda los productos seleccionados en las comandas.
 
-🗃️ Base de Datos: registro
+* `users`
+  Almacena los usuarios registrados.
 
-📌 Tablas:
+### Triggers
 
-🕵️ auditoria_productos:
-Registra cada vez que se agrega un producto a la carta (con fecha, hora, nombre y ID).
+* Se activa al insertar un producto en `carta`, creando automáticamente un registro en `auditoria_productos`.
 
-📜 carta:
-Contiene todos los productos disponibles en la carta.
+### Relaciones
 
-🛒 seleccion_productos:
-Se agregan aquí los productos seleccionados en la comanda.
+* `carta`, `seleccion_productos` y `auditoria_productos` están unidas por la columna `producto`.
+* `users` es una tabla independiente.
 
-👤 users:
-Almacena los usuarios registrados.
+### Función
 
-🔁 Trigger:
-Al hacer un INSERT en carta, se crea un registro automáticamente en auditoria_productos con:
+* **`total_gastado`**: Calcula el total consumido por una mesa.
 
-Fecha y hora
+---
 
-Nombre del producto
+## 🧪 Pruebas (JUnit)
 
-ID incremental (clave primaria)
+El proyecto incluye 7 tests automatizados para validar la lógica del sistema:
 
-🔗 Relaciones:
+* `registroProductos_camposVacios_noDebeRegistrar`
+* `iniciosesion_usuarioVacio_noInsertar`
+* `CamposVacios`
+* `ResumenCobroMesaVacia`
+* `testMesasConIdentificadorInvalido`
+* `testCamposCompletos`
+* `testCamposProductoVacio`
 
-- Las tablas carta, seleccion_productos y auditoria_productos están relacionadas por la columna producto.
+---
 
-- La tabla users está independiente, no se une a otras.
+## 🖼️ Visuales
 
-⚙️ Función:
+### Capturas de Pantalla
 
-total_gastado: Suma los productos de la misma mesa y devuelve el total como un número entero.
+| Pantalla General                                                                               | Base de Datos                                                                                  | Cobro                                                                                          |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| ![Pantalla 1](https://github.com/user-attachments/assets/02d3b33c-4123-4c1e-a5d7-16c4571db0ae) | ![Pantalla 2](https://github.com/user-attachments/assets/2129deda-ac15-4a6a-b565-b9070cb60a2a) | ![Pantalla 3](https://github.com/user-attachments/assets/c9a1fd0e-03cf-4e70-a55a-5b6ff67c9f21) |
 
-💻 Repositorio en GitHub
+---
 
-🌿 Ramas:
+## 🚀 Empezando
 
-- main: Contiene el resultado final del proyecto.
+### Instalación del Proyecto
 
-- joseluis: Trabajo individual de José Luis.
+1. Clona o descarga el proyecto desde la rama `main` del repositorio:
+   [https://github.com/selukiler/Proyecto](https://github.com/selukiler/Proyecto)
+2. Extrae el archivo ZIP.
+3. Importa el proyecto en Eclipse.
+4. Asegúrate de copiar la carpeta `Pantallas` en `TPV/src`.
 
-- pepe: Trabajo individual de Pepe.
+### Configuración de la Base de Datos
 
-✅ Pruebas JUnit
+1. Inicia XAMPP y activa Apache + MySQL.
+2. Crea una base de datos llamada `registro`.
+3. Importa el archivo `.sql` desde el repositorio.
 
-Hay 7 tests creados para verificar la lógica y errores del sistema:
+---
 
-🧪 registroProductos_camposVacios_noDebeRegistrar
+## 📋 Requisitos
 
-🧪 iniciosesion_usuarioVacio_noInsertar
+* **Sistema Operativo**: Windows 10/11
+* **Lenguaje**: Java
+* **IDE**: Eclipse (o IntelliJ)
+* **Testing**: JUnit
+* **Base de Datos**: XAMPP + MySQL + phpMyAdmin
 
-🧪 CamposVacios
+---
 
-🧪 ResumenCobroMesaVacia
+## 📦 Despliegue
 
-🧪 testMesasConIdentificadorInvalido
+Para ejecutar el proyecto:
 
-🧪 testCamposCompletos
+1. Abre Eclipse.
+2. Ejecuta la clase `InicioSesion`.
+3. Desde ahí se puede navegar por todo el sistema TPV.
 
-🧪 testCamposProductoVacio
+---
 
-## Visuales
+## 🛠️ Tecnologías Utilizadas
 
-Capturas de pantalla, videos o GIFs que demuestran lo que hace el proyecto y cómo usarlo.
+* **Java** – Lenguaje principal del backend.
+* **Eclipse / IntelliJ** – Entornos de desarrollo.
+* **XAMPP / MySQL / phpMyAdmin** – Sistema de base de datos y servidor local.
+* **JUnit** – Pruebas unitarias.
 
-![image](https://github.com/user-attachments/assets/02d3b33c-4123-4c1e-a5d7-16c4571db0ae)
+---
 
-Todas las pantallas del proyecto
+## 🔗 Repositorio
 
-![image](https://github.com/user-attachments/assets/2129deda-ac15-4a6a-b565-b9070cb60a2a)
+[https://github.com/selukiler/Proyecto](https://github.com/selukiler/Proyecto)
 
-Base de datos
+### Ramas
 
-![image](https://github.com/user-attachments/assets/c9a1fd0e-03cf-4e70-a55a-5b6ff67c9f21)
--
-Proyecto en GitHub
+* `main`: Resultado final del proyecto.
+* `joseluis`: Desarrollo individual de José Luis.
+* `pepe`: Desarrollo individual de Pepe.
 
-## Empezando 🚀
+---
 
-Estas instrucciones te guiarán para obtener una copia de este proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas.
-Para la instalacion del proyecto entramos en el proyecto de github en la rama main https://github.com/selukiler/Proyecto descargamos todo los archivos y descomprimimos el zip. La parte de programacion arrastamos el archivo de Pantallas en TPV/src
-La base de datos hay que tener xampp y crear una base de datos que se llame registro este paso es importante, y importamos el archivo .sql del GitHub
+## 🧑‍💻 Autores
 
-### Prerrequisitos 📋
+* **José Antonio Salado Muñoz**
+* **José Luis Fernández Cabeza**
 
-Lista de software y herramientas, incluyendo versiones, que necesitas para instalar y ejecutar este proyecto:
+---
 
-- Sistema Operativo (Windows 10/11)
-- Lenguaje de programación (Java)
-- Framework (Eclipse, JUnit)
-- Base de datos (XAMPP)
+## 🛠 Soporte
 
-## Despliegue 📦
+¿Tienes algún problema o sugerencia?
+Abre un issue aquí: [https://github.com/selukiler/Proyecto/issues](https://github.com/selukiler/Proyecto/issues)
 
-Instrucciones sobre cómo desplegar esto en un sistema en vivo o ambiente de producción.
-Para ver el proyecto iniciamos en el id la pantalla iniciosesion y ejecutamos, de ahi comienza toda la TPV
+---
 
-## Construido Con 🛠️
-
-Explica qué tecnologías usaste para construir este proyecto. Aquí algunos ejemplos:
-
-- Java- El lenguaje utilizado
-- Eclipse y Intellij - El framework web utilizado
-- XAMPP - Sistema de base de datos
-
-## Soporte
-
-Si tienes algún problema o sugerencia, por favor abre un problema (https://github.com/selukiler/Proyecto).
-
-## Autores ✒️
-
-- **Jose Antonio Salado Muñoz** y **Jose Luis Fernadez Cabeza**
+¿Deseas que lo convierta en un archivo `README.md` descargable o subirlo a GitHub directamente?
